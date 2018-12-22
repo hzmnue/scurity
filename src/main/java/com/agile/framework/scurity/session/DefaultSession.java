@@ -12,7 +12,6 @@ public class DefaultSession implements Session {
 
     public DefaultSession(Object sessionId) {
         this.sessionId=sessionId;
-        HttpServlet
     }
 
     @Override
