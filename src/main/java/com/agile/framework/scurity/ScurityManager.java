@@ -1,6 +1,6 @@
 package com.agile.framework.scurity;
 
-import com.agile.framework.scurity.session.DefaultSessionManager;
+import com.agile.framework.scurity.session.impl.manager.DefaultSessionManager;
 import com.agile.framework.scurity.session.Session;
 import com.agile.framework.scurity.session.SessionManager;
 

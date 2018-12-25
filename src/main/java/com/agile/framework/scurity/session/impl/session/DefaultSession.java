@@ -1,4 +1,6 @@
-package com.agile.framework.scurity.session;
+package com.agile.framework.scurity.session.impl.session;
+
+import com.agile.framework.scurity.session.Session;
 
 import javax.servlet.http.HttpServlet;
 import java.util.HashMap;
@@ -45,7 +47,7 @@ public class DefaultSession implements Session {
     }
 
     @Override
-    public Object getSessionId() {
+    public Object getId() {
         return this.sessionId;
     }
 }

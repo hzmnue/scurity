@@ -10,4 +10,5 @@ public interface SessionManager<T> {
     public Session getSession(T  sessionId);
 
     public Session invalidSession(T  sessionId);
+
 }

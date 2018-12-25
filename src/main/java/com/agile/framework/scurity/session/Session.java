@@ -14,6 +14,6 @@ public interface Session {
 
     public void removeAuth(String s);
 
-    public Object getSessionId();
+    public Object getId();
 
 }
