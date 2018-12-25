@@ -1,5 +1,6 @@
 package com.agile.framework.scurity;
 
+import com.agile.framework.scurity.common.Constants;
 import com.agile.framework.scurity.session.impl.manager.DefaultSessionManager;
 import com.agile.framework.scurity.session.Session;
 import com.agile.framework.scurity.session.SessionManager;
@@ -19,22 +20,23 @@ public class ScurityManager {
         this.sessionManager = sessionManager;
     }
 
-    public Session login(Object token){
-         verifyService.doVerify(token);
-         Object sessionId= sessionManager.createSessionId();
-         Session session= sessionManager.createSession(sessionId);
-         return session;
+    public Session createSession(Object... params){
+        return sessionManager.createSession(params);
     }
 
-    public void logOff(Session session){
-        sessionManager.invalidSession(session);
+    public void login(String sessionId,Object token){
+        Session session= sessionManager.getSession(sessionId);
+        verifyService.doVerify(token);
+        session.setAttribute("token"+ Constants.SUFFIX,token);
     }
 
-    public boolean doAuthorize(Session session){
-      return verifyService.doAuthorize(session);
+    public void logOff(String sessionId){
+        sessionManager.invalidSession(sessionId);
     }
 
-    public Session getSession(Object sessionId) {
-        return this.sessionManager.getSession(sessionId);
+    public boolean doAuthorize(String sessionId){
+        Session session= sessionManager.getSession(sessionId);
+        return verifyService.doAuthorize(session);
     }
+
 }

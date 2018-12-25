@@ -8,12 +8,6 @@ public interface Session {
 
     public void removeAttribute(String s);
 
-    public void setAuth(String s, Object o);
-
-    public Object getAuth(String s);
-
-    public void removeAuth(String s);
-
-    public Object getId();
+    public String getId();
 
 }

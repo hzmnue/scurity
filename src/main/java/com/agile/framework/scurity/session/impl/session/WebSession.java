@@ -12,7 +12,7 @@ public class WebSession implements HttpSession,Session{
 
     private HttpSession session;
 
-    public WebSession( HttpSession session) {
+    public WebSession(HttpSession session) {
         this.session=session;
     }
 
@@ -86,21 +86,6 @@ public class WebSession implements HttpSession,Session{
     @Override
     public void removeAttribute(String s) {
         session.removeAttribute(s);
-    }
-
-    @Override
-    public void setAuth(String s, Object o) {
-
-    }
-
-    @Override
-    public Object getAuth(String s) {
-        return null;
-    }
-
-    @Override
-    public void removeAuth(String s) {
-
     }
 
     @Override

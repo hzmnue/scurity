@@ -2,31 +2,22 @@ package com.agile.framework.scurity.session.impl.manager;
 
 import com.agile.framework.scurity.session.Session;
 import com.agile.framework.scurity.session.SessionManager;
+import com.agile.framework.scurity.session.impl.session.WebSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpSession;
 
-public class WebSessionManager implements SessionManager {
+public class WebSessionManager extends DefaultSessionManager{
 
-    Map<Object,Session> sessionMap=new HashMap<>();
-    @Override
-    public Object createSessionId() {
-        return null;
-    }
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
-    public Session createSession(Object sessionId) {
-        return null;
+    public Session doCreateSession(Object... params) {
+        if(params==null||params.length==0||!(params[0] instanceof HttpSession)){
+            logger.error("error params:"+params);
+            throw new IllegalArgumentException("error params:"+params);
+        }
+        return new WebSession((HttpSession)params[0]);
     }
-
-    @Override
-    public Session getSession(Object sessionId) {
-        return null;
-    }
-
-    @Override
-    public Session invalidSession(Object sessionId) {
-        return null;
-    }
-
 }

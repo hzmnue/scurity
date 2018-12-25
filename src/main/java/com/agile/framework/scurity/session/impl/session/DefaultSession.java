@@ -10,9 +10,9 @@ public class DefaultSession implements Session {
 
     Map<String,Object> attributes=new HashMap<>();
 
-    private Object sessionId;
+    private String sessionId;
 
-    public DefaultSession(Object sessionId) {
+    public DefaultSession(String sessionId) {
         this.sessionId=sessionId;
     }
 
@@ -32,22 +32,7 @@ public class DefaultSession implements Session {
     }
 
     @Override
-    public void setAuth(String s, Object o) {
-        attributes.put(s,o);
-    }
-
-    @Override
-    public Object getAuth(String s) {
-        return attributes.get(s);
-    }
-
-    @Override
-    public void removeAuth(String s) {
-        attributes.remove(s);
-    }
-
-    @Override
-    public Object getId() {
+    public String getId() {
         return this.sessionId;
     }
 }

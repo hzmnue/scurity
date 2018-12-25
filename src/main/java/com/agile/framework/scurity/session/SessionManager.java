@@ -1,14 +1,11 @@
 package com.agile.framework.scurity.session;
 
 
-public interface SessionManager<T> {
+public interface SessionManager {
 
-    public T createSessionId();
+    public Session getSession(String  sessionId);
 
-    public Session createSession(T  sessionId);
+    public Session invalidSession(String sessionId);
 
-    public Session getSession(T  sessionId);
-
-    public Session invalidSession(T  sessionId);
-
+    public Session createSession(Object... params);
 }
