@@ -1,18 +1,18 @@
-package com.agile.framework.scurity.session.impl.session;
+package com.agile.framework.security.web;
 
-import com.agile.framework.scurity.session.Session;
+import com.agile.framework.security.session.Session;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
 import java.util.Enumeration;
 
-public class WebSession implements HttpSession,Session{
+public class WebSecuritySession implements HttpSession,Session{
 
 
     private HttpSession session;
 
-    public WebSession(HttpSession session) {
+    public WebSecuritySession(HttpSession session) {
         this.session=session;
     }
 

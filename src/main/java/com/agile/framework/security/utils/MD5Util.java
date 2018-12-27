@@ -1,4 +1,4 @@
-package com.agile.framework.scurity.utils;
+package com.agile.framework.security.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;

@@ -1,8 +1,7 @@
-package com.agile.framework.scurity.session.impl.session;
+package com.agile.framework.security.session.impl.session;
 
-import com.agile.framework.scurity.session.Session;
+import com.agile.framework.security.session.Session;
 
-import javax.servlet.http.HttpServlet;
 import java.util.HashMap;
 import java.util.Map;
 

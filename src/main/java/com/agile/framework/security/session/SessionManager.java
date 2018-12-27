@@ -1,4 +1,4 @@
-package com.agile.framework.scurity.session;
+package com.agile.framework.security.session;
 
 
 public interface SessionManager {
@@ -7,5 +7,7 @@ public interface SessionManager {
 
     public Session invalidSession(String sessionId);
 
-    public Session createSession(Object... params);
+    public Session createSessionId();
+
+    public Session createSession(String sessionId);
 }

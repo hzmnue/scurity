@@ -1,4 +1,4 @@
-package com.agile.framework.scurity.common;
+package com.agile.framework.security.common;
 
 public class Constants {
   public static String SUFFIX="agile@%*";

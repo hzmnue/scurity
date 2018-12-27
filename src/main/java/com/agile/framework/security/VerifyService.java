@@ -1,6 +1,6 @@
-package com.agile.framework.scurity;
+package com.agile.framework.security;
 
-import com.agile.framework.scurity.session.Session;
+import com.agile.framework.security.session.Session;
 
 public interface VerifyService {
 
