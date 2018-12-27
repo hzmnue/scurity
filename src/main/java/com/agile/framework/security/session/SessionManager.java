@@ -7,7 +7,7 @@ public interface SessionManager {
 
     public Session invalidSession(String sessionId);
 
-    public Session createSessionId();
+    public String createSessionId();
 
     public Session createSession(String sessionId);
 }

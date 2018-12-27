@@ -20,8 +20,9 @@ public class SecurityManager {
         return instance;
     }
 
-    public Session createSession(Object... params){
-        return sessionManager.createSession(params);
+    public Session createSession(){
+        String sessionId=sessionManager.createSessionId();
+        return sessionManager.createSession(sessionId);
     }
 
     public void login(String sessionId,Object token){

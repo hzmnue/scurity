@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class SessionManagerImpl implements SessionManager {
+public class DefaultSessionManager implements SessionManager {
 
     private Map<String,Session> sessionMap=new ConcurrentHashMap<>();
     private AtomicInteger idSeed=new AtomicInteger(0);
@@ -26,22 +26,19 @@ public class SessionManagerImpl implements SessionManager {
     }
 
     @Override
-    public Session createSessionId() {
-        return null;
+    public String createSessionId() {
+        String sessionId= System.currentTimeMillis()+Constants.SUFFIX+idSeed;
+        sessionId= MD5Util.encode(sessionId);
+        return sessionId;
     }
 
     @Override
     public Session createSession(String sessionId) {
-    //    Session session=doCreateSession(params);
-        sessionMap.put(session.getId(),session);
+        Session session=new DefaultSession(sessionId);
+        sessionMap.put(sessionId,session);
         return session;
     }
 
 
 
-    public  Session doCreateSession(Object... params) {
-        String sessionId= MD5Util.encode(idSeed.getAndIncrement()+Constants.SUFFIX);
-        Session session= new DefaultSession(sessionId);
-        return session;
-    }
 }
