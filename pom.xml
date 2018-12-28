@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.agile.framework</groupId>
-	<artifactId>security</artifactId>
+	<artifactId>agile.security</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<build>
 		<plugins>
@@ -18,7 +18,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	<name>login-spring-boot-starter</name>
+	<name>security</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -26,31 +26,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.7</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>1.1.7</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-access</artifactId>
-			<version>1.1.7</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.1.7</version>
-		</dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-        </dependency>
 	</dependencies>
 
 

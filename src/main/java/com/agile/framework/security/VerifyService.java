@@ -6,5 +6,5 @@ public interface VerifyService {
 
     public boolean doAuthorize(Session session);
 
-    public void doVerify(Object token);
+    public boolean doVerify(Object token);
 }

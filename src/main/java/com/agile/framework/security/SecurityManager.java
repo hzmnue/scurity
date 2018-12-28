@@ -5,10 +5,13 @@ import com.agile.framework.security.session.Session;
 import com.agile.framework.security.session.SessionManager;
 import com.agile.framework.security.session.impl.manager.DefaultSessionManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class SecurityManager {
 
-    private VerifyService verifyService;
+    private List<VerifyService> verifyServices=new ArrayList<>();
     private SessionManager sessionManager;
     private static SecurityManager instance;
 
@@ -25,10 +28,14 @@ public class SecurityManager {
         return sessionManager.createSession(sessionId);
     }
 
-    public void login(String sessionId,Object token){
+    public boolean login(String sessionId,Object token){
         Session session= sessionManager.getSession(sessionId);
-        verifyService.doVerify(token);
+        for(VerifyService verifyService:verifyServices){
+            if(!verifyService.doVerify(token))
+                return false;
+        }
         session.setAttribute("token"+ Constants.SUFFIX,token);
+        return true;
     }
 
     public void logOff(String sessionId){
@@ -37,15 +44,20 @@ public class SecurityManager {
 
     public boolean doAuthorize(String sessionId){
         Session session= sessionManager.getSession(sessionId);
-        return verifyService.doAuthorize(session);
+        Object token= session.getAttribute("token"+ Constants.SUFFIX);
+        for(VerifyService verifyService:verifyServices){
+            if(!verifyService.doVerify(token))
+                return false;
+        }
+        return true;
     }
 
     public Session getSesssion(String sessionId){
         return sessionManager.getSession(sessionId);
     }
 
-    public void setVerifyService(VerifyService verifyService) {
-        this.verifyService = verifyService;
+    public void addVerifyService(VerifyService verifyService) {
+        verifyServices.add(verifyService);
     }
 
     public void setSessionManager(SessionManager sessionManager) {
