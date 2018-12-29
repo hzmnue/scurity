@@ -2,22 +2,23 @@ package com.agile.framework.security.session.impl.session;
 
 import com.agile.framework.security.session.Session;
 
-import java.util.HashMap;
+
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class DefaultSession implements Session {
-
-    Map<String,Object> attributes=new HashMap<>();
+public class SessionImpl implements Session {
 
     private String sessionId;
+    private Map<String,Object> attributes=new ConcurrentHashMap<>();
 
-    public DefaultSession(String sessionId) {
+    public SessionImpl(String sessionId) {
         this.sessionId=sessionId;
     }
 
     @Override
     public void setAttribute(String s, Object o) {
         attributes.put(s,o);
+
     }
 
     @Override
@@ -34,4 +35,6 @@ public class DefaultSession implements Session {
     public String getId() {
         return this.sessionId;
     }
+
+
 }
