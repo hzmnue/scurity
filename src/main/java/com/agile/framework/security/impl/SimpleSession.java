@@ -1,18 +1,23 @@
-package com.agile.framework.security.session.impl.session;
+package com.agile.framework.security.impl;
 
-import com.agile.framework.security.session.Session;
+import com.agile.framework.security.Session;
 
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class SessionImpl implements Session {
+public class SimpleSession implements Session {
 
-    private String sessionId;
+    private String id;
     private Map<String,Object> attributes=new ConcurrentHashMap<>();
 
-    public SessionImpl(String sessionId) {
-        this.sessionId=sessionId;
+
+    public SimpleSession() {
+
+    }
+
+    public SimpleSession(String sessionId) {
+        this.id=sessionId;
     }
 
     @Override
@@ -33,7 +38,7 @@ public class SessionImpl implements Session {
 
     @Override
     public String getId() {
-        return this.sessionId;
+        return this.id;
     }
 
 

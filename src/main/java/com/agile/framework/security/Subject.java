@@ -1,23 +1,17 @@
-package com.agile.framework.security.subject.impl.subject;
-
-import com.agile.framework.security.VerifyService;
-import com.agile.framework.security.session.Session;
-import com.agile.framework.security.subject.Subject;
+package com.agile.framework.security;
 
 import java.util.List;
 
-public class DefaultSubject implements Subject {
+public class Subject {
     private static String AGILE_SECURITY_TOKEN="agile_security_token";
     private Session session;
-    private List<VerifyService> verifyServices;
+    private static List<VerifyService> verifyServices;
 
 
-    public DefaultSubject(Session session, List<VerifyService> verifyServices) {
+    public Subject(Session session) {
         this.session = session;
-        this.verifyServices = verifyServices;
     }
 
-    @Override
     public boolean login(Object token){
         for(VerifyService verifyService:verifyServices){
             if(!verifyService.doVerify(token))
@@ -27,39 +21,33 @@ public class DefaultSubject implements Subject {
         return true;
     }
 
-    @Override
+
     public void logOff() {
-        session.removeAttribute(AGILE_SECURITY_TOKEN);
+        session.setAttribute(AGILE_SECURITY_TOKEN,null);
     }
 
-    @Override
     public boolean doAuthorize() {
         Object token= session.getAttribute(AGILE_SECURITY_TOKEN);
         for(VerifyService verifyService:verifyServices){
-            if(!verifyService.doVerify(token))
+            if(!verifyService.doAuthorize(token))
                 return false;
         }
         return true;
     }
 
-    @Override
     public Session getSesssion() {
         return session;
     }
 
-    @Override
     public boolean isExipred() {
         return false;
     }
 
-    @Override
     public boolean setExipredTime(long time) {
         return false;
     }
 
-    @Override
-    public boolean getTokenId(long time) {
-        return false;
+    static void setVerifyServices(List<VerifyService> verifyServices) {
+        Subject.verifyServices = verifyServices;
     }
-
 }
