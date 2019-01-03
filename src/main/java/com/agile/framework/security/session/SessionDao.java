@@ -1,4 +1,6 @@
-package com.agile.framework.security;
+package com.agile.framework.security.session;
+
+import com.agile.framework.security.session.Session;
 
 public interface SessionDao {
     public Session getSession(String sessionId);

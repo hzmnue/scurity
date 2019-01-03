@@ -1,9 +1,8 @@
-package com.agile.framework.security.impl;
+package com.agile.framework.security.session.impl;
 
-import com.agile.framework.security.Session;
-import com.agile.framework.security.SessionDao;
+import com.agile.framework.security.session.Session;
+import com.agile.framework.security.session.SessionDao;
 import com.agile.framework.security.common.Constants;
-import com.agile.framework.security.impl.SimpleSession;
 import com.agile.framework.security.utils.MD5Util;
 
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.agile.framework.security;
+package com.agile.framework.security.session;
 
 public interface Session {
 

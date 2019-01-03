@@ -1,6 +1,6 @@
-package com.agile.framework.security.impl;
+package com.agile.framework.security.session.impl;
 
-import com.agile.framework.security.Session;
+import com.agile.framework.security.session.Session;
 
 
 import java.util.Map;
